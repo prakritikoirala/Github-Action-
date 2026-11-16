@@ -1,0 +1,25 @@
+# Goal: whenever someone changes Python code,
+# the linter checks syntax, formatting, and indentation.
+name: Auto Linter
+
+on:
+  push:
+    paths:
+      - "**/*.py"
+
+jobs:
+  code:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout/Clone the code
+        uses: actions/checkout@v4
+
+      # This step installs the linter tool
+      - name: Install Linter
+        run: pip install ruff
+
+      - name: Check syntax and lint errors
+        run: ruff check .
+
+      - name: Check formatting
+        run: ruff format --check .
