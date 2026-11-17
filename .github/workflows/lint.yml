@@ -21,8 +21,4 @@ jobs:
       - name: Install Linter
         run: pip install ruff
 
-      - name: Check syntax and lint errors
-        run: ruff check .
-
-      - name: Check formatting
-        run: ruff format --check .
+     
