@@ -17,10 +17,19 @@ jobs:
       - name: Checkout/Clone the code
         uses: actions/checkout@v4
 
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
       # This step installs the linter tool
       - name: Install Linter
         run: pip install ruff
-        # this step will un the linter 
-      -name: Check the files for linting 
-        run:ruff check .
+
+      # This step runs the linter
+      - name: Check syntax and lint errors
+        run: ruff check .
+
+      - name: Check formatting
+        run: ruff format --check .
      
